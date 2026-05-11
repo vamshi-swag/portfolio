@@ -32,7 +32,7 @@
   margin-bottom: 0.8rem;
   display: flex;
   align-items: center;
-  color: var(--text-secondary);
+  color: var(--foreground);
 }
 
 .bullet {

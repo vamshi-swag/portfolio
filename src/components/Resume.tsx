@@ -36,7 +36,8 @@ export default function Resume() {
     <section className="section" id="resume">
       <h2 className="section-title">Experience & <span>Education</span></h2>
 
-      <div className={styles.chartWrapper}>
+      <div className="content-frame">
+        <div className={styles.chartWrapper}>
         <div className={styles.yAxis}>
           <span>2030</span>
           <span>2028</span>
@@ -99,6 +100,7 @@ export default function Resume() {
           <div className={styles.xAxis}>
             <span>Experience</span>
           </div>
+        </div>
         </div>
       </div>
 

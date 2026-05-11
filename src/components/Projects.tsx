@@ -71,26 +71,28 @@ export default function Projects() {
   return (
     <section className="section" id="projects">
       <h2 className="section-title">Featured <span>Projects</span></h2>
-      <div className={styles.grid}>
-        {projects.map(project => (
-          <div key={project.id} className={styles.card}>
-            <div className={styles.cardContent}>
-              <h3 className={styles.title}>{project.title}</h3>
-              <p className={styles.description}>{project.description}</p>
-              <div className={styles.techStack}>
-                {project.tech.map(tech => (
-                  <span key={tech} className={styles.tech}>{tech}</span>
-                ))}
+      <div className="content-frame">
+        <div className={styles.grid}>
+          {projects.map(project => (
+            <div key={project.id} className={styles.card}>
+              <div className={styles.cardContent}>
+                <h3 className={styles.title}>{project.title}</h3>
+                <p className={styles.description}>{project.description}</p>
+                <div className={styles.techStack}>
+                  {project.tech.map(tech => (
+                    <span key={tech} className={styles.tech}>{tech}</span>
+                  ))}
+                </div>
+                <button 
+                  onClick={() => setSelectedProject(project)} 
+                  className={styles.link}
+                >
+                  View Project &rarr;
+                </button>
               </div>
-              <button 
-                onClick={() => setSelectedProject(project)} 
-                className={styles.link}
-              >
-                View Project &rarr;
-              </button>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {selectedProject && (

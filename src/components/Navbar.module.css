@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   height: 70px;
-  background-color: rgba(10, 10, 10, 0.8);
+  background-color: var(--nav-bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
   z-index: 1000;
@@ -36,6 +36,11 @@
   list-style: none;
   display: flex;
   gap: 2rem;
+  align-items: center;
+}
+
+.toggleWrapper {
+  margin-left: 1rem;
 }
 
 .link {

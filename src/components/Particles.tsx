@@ -1,7 +1,9 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import { useTheme } from 'next-themes';
 
 export default function Particles() {
+  const { theme } = useTheme();
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -14,8 +16,10 @@ export default function Particles() {
     let animationFrameId: number;
     let paths: CircuitPath[] = [];
     let pulses: Pulse[] = [];
-    const color = '255, 255, 255'; // RGB for White
-    const accentColor = '#ffffff';
+    
+    // Theme-aware colors
+    const color = theme === 'light' ? '0, 0, 0' : '255, 255, 255';
+    const accentColor = theme === 'light' ? '#000000' : '#ffffff';
 
     class CircuitPath {
       points: { x: number, y: number }[] = [];
@@ -28,8 +32,10 @@ export default function Particles() {
         let y = Math.random() * canvas.height;
 
         this.points.push({ x, y });
-        this.baseOpacity = 0.05 + Math.random() * 0.1;
-        this.width = Math.random() > 0.8 ? 0.8 : 0.4;
+        // Maximized opacity and width for light mode to ensure strong exposure
+        const minOpacity = theme === 'light' ? 0.35 : 0.1;
+        this.baseOpacity = minOpacity + Math.random() * 0.15;
+        this.width = theme === 'light' ? 1.2 : 0.6;
 
         let curX = x;
         let curY = y;
@@ -119,12 +125,12 @@ export default function Particles() {
         // Blinking logic
         const blink = (Math.sin(Date.now() * 0.005 + (curX + curY)) + 1) / 2; // 0 to 1
 
-        ctx.globalAlpha = (0.1 + blink * 0.4) * this.path.baseOpacity * 10;
-        ctx.shadowBlur = 5 + blink * 10;
+        ctx.globalAlpha = (0.3 + blink * 0.7) * (theme === 'light' ? 0.8 : 1);
+        ctx.shadowBlur = theme === 'light' ? 2 : 10;
         ctx.shadowColor = accentColor;
-        ctx.fillStyle = '#fff';
+        ctx.fillStyle = accentColor;
         ctx.beginPath();
-        ctx.arc(curX, curY, 0.5 + blink * 0.3, 0, Math.PI * 2);
+        ctx.arc(curX, curY, theme === 'light' ? 1 : 1.5, 0, Math.PI * 2);
         ctx.fill();
         ctx.shadowBlur = 0;
         ctx.globalAlpha = 1;
@@ -170,7 +176,7 @@ export default function Particles() {
       window.removeEventListener('resize', resize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [theme]);
 
   return (
     <canvas

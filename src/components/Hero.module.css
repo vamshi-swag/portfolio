@@ -43,7 +43,7 @@
 
 .primaryBtn {
   background-color: var(--accent);
-  color: #000;
+  color: var(--background);
   border: 1px solid var(--accent);
 }
 
@@ -240,7 +240,7 @@
 
 .iconBox:hover {
   background-color: var(--accent);
-  color: #000;
+  color: var(--background);
   box-shadow: 0 0 15px var(--accent-glow);
   transform: scale(1.1);
 }

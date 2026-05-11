@@ -14,7 +14,7 @@ export default function About() {
     <section className="section" id="about">
       <h2 className="section-title">About <span>Me</span></h2>
       <div className={styles.container}>
-        <div className={styles.textFrame}>
+        <div className="content-frame">
           <p>
             {highlightWords("Hello! I'm Vamshi Neelakantam, a Generative AI Engineer with hands-on experience in building RAG-based applications, LLM-powered systems, and scalable AI pipelines.")}
           </p>

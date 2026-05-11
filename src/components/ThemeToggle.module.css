@@ -1,0 +1,49 @@
+.toggleBtn {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--accent);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.toggleBtn:hover {
+  transform: scale(1.1);
+  border-color: var(--accent);
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: rotateIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes rotateIn {
+  from {
+    transform: rotate(-90deg) scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.icon {
+  color: var(--accent);
+}
+
+.placeholder {
+  width: 40px;
+  height: 40px;
+}

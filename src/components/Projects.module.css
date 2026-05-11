@@ -59,11 +59,12 @@
 
 .tech {
   font-size: 0.8rem;
-  padding: 0.2rem 0.8rem;
-  background-color: rgba(255, 255, 255, 0.05);
+  padding: 0.3rem 0.9rem;
+  background-color: var(--accent-glow);
   border-radius: 20px;
-  color: var(--text-secondary);
+  color: var(--foreground);
   border: 1px solid var(--border-color);
+  font-weight: 500;
 }
 
 .link {
@@ -80,7 +81,7 @@
 }
 
 .link:hover {
-  color: #fff;
+  color: var(--foreground);
   text-shadow: 0 0 10px var(--accent-glow);
 }
 
@@ -160,7 +161,7 @@
 .topicsContainer h4 {
   font-size: 1.3rem;
   margin-bottom: 1rem;
-  color: #fff;
+  color: var(--foreground);
 }
 
 .topicsList {

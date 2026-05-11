@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Particles from "@/components/Particles";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const dancingScript = Dancing_Script({ subsets: ["latin"], variable: "--font-signature" });
@@ -22,10 +23,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${dancingScript.variable} ${playfair.variable}`} suppressHydrationWarning>
-        <Particles />
-        <Navbar />
-        {children}
-        <Footer />
+        <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem={false}>
+          <Particles />
+          <Navbar />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

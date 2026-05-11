@@ -1,18 +1,6 @@
 .chartWrapper {
   display: flex;
-  margin: 4rem 0 6rem 0;
   width: 100%;
-  background-color: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 3rem 3rem 1rem 3rem; /* Less bottom padding because xAxis is absolute positioned down into it */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.chartWrapper:hover {
-  border-color: var(--accent);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
 .yAxis {

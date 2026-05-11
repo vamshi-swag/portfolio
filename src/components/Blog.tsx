@@ -28,18 +28,20 @@ export default function Blog() {
   return (
     <section className="section" id="blog">
       <h2 className="section-title">Latest <span>Thoughts</span></h2>
-      <div className={styles.grid}>
-        {posts.map(post => (
-          <article key={post.id} className={styles.postCard}>
-            <span className={styles.date}>{post.date}</span>
-            <h3 className={styles.title}>{post.title}</h3>
-            <p className={styles.summary}>{post.summary}</p>
-            <a href={post.link} className={styles.readMore}>Read Article &rarr;</a>
-          </article>
-        ))}
-      </div>
-      <div className={styles.viewAll}>
-        <a href="#" className={styles.viewAllBtn}>View All Posts</a>
+      <div className="content-frame">
+        <div className={styles.grid}>
+          {posts.map(post => (
+            <article key={post.id} className={styles.postCard}>
+              <span className={styles.date}>{post.date}</span>
+              <h3 className={styles.title}>{post.title}</h3>
+              <p className={styles.summary}>{post.summary}</p>
+              <a href={post.link} className={styles.readMore}>Read Article &rarr;</a>
+            </article>
+          ))}
+        </div>
+        <div className={styles.viewAll}>
+          <a href="#" className={styles.viewAllBtn}>View All Posts</a>
+        </div>
       </div>
     </section>
   );
