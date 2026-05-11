@@ -1,0 +1,66 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.postCard {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 2rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.postCard:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+.date {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+  line-height: 1.4;
+}
+
+.summary {
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.readMore {
+  color: var(--foreground);
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.readMore:hover {
+  color: var(--accent);
+}
+
+.viewAll {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.viewAllBtn {
+  color: var(--text-secondary);
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+  padding-bottom: 0.2rem;
+}
+
+.viewAllBtn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}

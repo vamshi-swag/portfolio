@@ -1,0 +1,126 @@
+.container {
+  display: flex;
+  gap: 4rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.info {
+  flex: 1;
+}
+
+.infoTitle {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--foreground);
+}
+
+.infoDesc {
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailLabel {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3rem;
+}
+
+.detailValue {
+  font-size: 1.1rem;
+  color: var(--foreground);
+  transition: color 0.2s ease;
+}
+
+a.detailValue:hover {
+  color: var(--accent);
+}
+
+.form {
+  flex: 1.2;
+  background-color: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--foreground);
+}
+
+.input, .textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background-color: var(--background);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--foreground);
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.textarea {
+  resize: vertical;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--accent);
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.success {
+  background-color: #4ade80 !important;
+  color: #000 !important;
+}
+
+.errorMessage {
+  color: #ef4444;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}

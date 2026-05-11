@@ -1,0 +1,403 @@
+.chartWrapper {
+  display: flex;
+  margin: 4rem 0 6rem 0;
+  width: 100%;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3rem 3rem 1rem 3rem; /* Less bottom padding because xAxis is absolute positioned down into it */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chartWrapper:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.yAxis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 1.5rem;
+  padding-bottom: 3rem; /* offset for xAxis */
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  border-right: 2px solid var(--border-color);
+  text-align: right;
+  min-width: 120px;
+}
+
+.yAxis span {
+  position: relative;
+  transform: translateY(-50%); /* align text center with the line */
+}
+
+.yAxis span::after {
+  content: '';
+  position: absolute;
+  right: -1.5rem;
+  top: 50%;
+  width: 10px;
+  height: 2px;
+  background-color: var(--border-color);
+}
+
+.graphContainer {
+  position: relative;
+  flex: 1;
+  height: 500px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.xAxis {
+  position: absolute;
+  bottom: -2.5rem;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.xAxis span {
+  position: relative;
+}
+
+.graphLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.pathAnimation {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: drawLine 2.5s ease-out forwards;
+}
+
+.pathAnimationDelayed {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: drawLine 2s ease-out forwards;
+  animation-delay: 2s;
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.node {
+  position: absolute;
+  z-index: 2;
+}
+
+.node1 {
+  left: 10%; 
+  top: 81%;
+}
+
+.node2 {
+  left: 40%; 
+  top: 70%;
+}
+
+.node3 {
+  left: 70%; 
+  top: 65%;
+}
+
+.nodeDot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background-color: var(--background);
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--accent-glow);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: crosshair;
+}
+
+.node:hover .nodeDot {
+  transform: translate(-50%, -50%) scale(1.4);
+  background-color: var(--accent);
+}
+
+.nodeTitle {
+  position: absolute;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.nodeTitle::before {
+  content: '';
+  position: absolute;
+  background-color: var(--accent);
+  opacity: 0.5;
+  z-index: -1;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.node:hover .nodeTitle::before {
+  opacity: 1;
+  background-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* Offset and Connector for Node 1 */
+.node1 .nodeTitle {
+  left: 35px;
+  top: -20px; /* Centered vertically on the dot */
+}
+.node1 .nodeTitle::before {
+  right: 100%;
+  top: 50%;
+  width: 35px;
+  height: 2px;
+}
+
+/* Offset and Connector for Node 2 (pulling left) */
+.node2 .nodeTitle {
+  right: 35px;
+  top: -40px;
+}
+.node2 .nodeTitle::before {
+  left: 100%;
+  top: 50%;
+  width: 35px;
+  height: 2px;
+  transform-origin: left;
+  transform: rotate(35deg);
+}
+
+/* Offset and Connector for Node 3 (pulling right) */
+.node3 .nodeTitle {
+  left: 35px;
+  top: -50px;
+}
+.node3 .nodeTitle::before {
+  right: 100%;
+  top: 50%;
+  width: 35px;
+  height: 2px;
+  transform-origin: right;
+  transform: rotate(-35deg);
+}
+
+.node:hover .nodeTitle {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+.roleTitle {
+  font-size: 1.05rem;
+  color: var(--foreground);
+  margin: 0;
+  font-weight: 600;
+}
+
+.nodeDate {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .yAxis {
+    min-width: 100px;
+    padding-right: 1rem;
+  }
+  .nodeTitle {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .chartWrapper {
+    flex-direction: column;
+    margin-bottom: 2rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .yAxis {
+    display: none;
+  }
+
+  .xAxis {
+    display: none;
+  }
+
+  .graphContainer {
+    height: auto;
+    display: flex;
+    flex-direction: column-reverse; /* Education at bottom, Experience at top */
+    gap: 3.5rem;
+    padding-left: 2rem;
+    border-bottom: none;
+  }
+  
+  .graphLine {
+    display: none;
+  }
+
+  .graphContainer::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to top, var(--accent), var(--border-color)); /* Bright at bottom (start) */
+    opacity: 0.5;
+  }
+
+  .node {
+    position: relative;
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+    width: 100%;
+  }
+
+  .nodeDot {
+    position: absolute;
+    left: -1.5rem;
+    top: 22px;
+    margin: 0;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+  
+  .nodeTitle {
+    position: relative;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    text-align: left;
+    width: 100%;
+    white-space: normal;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .nodeDate {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .nodeTitle::before {
+    display: none; /* Hide connector lines in vertical view */
+  }
+}
+
+@media (max-width: 576px) {
+  .downloadBtn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  padding: 1.5rem;
+  animation: overlayFadeIn 0.3s ease-out;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modalContent {
+  background-color: var(--card-bg);
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  padding: 3rem;
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.95) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.closeBtn:hover {
+  color: var(--accent);
+}
+
+.modalRole {
+  font-size: 1.8rem;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+  padding-right: 2rem; /* prevent overlap with close btn */
+}
+
+.modalCompany {
+  display: block;
+  font-size: 1.1rem;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.modalDesc {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: 0;
+}
